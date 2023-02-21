@@ -18,6 +18,9 @@ LC 5. Longest Palindromic Substring \
 LC 6. Zigzag Conversion \
 LC 7. Reverse Integer \
 LC 8. String to Integer (atoi) \
+LC 198. House Robber \
+LC 213. House Robber II \
+LC 740. Delete and Earn \
 LC 2567. Minimum Score by Changing Two Elements \
 LC 2568. Minimum Impossible OR
 
