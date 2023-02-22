@@ -2,7 +2,7 @@ package LC198;
 
 public class Solution2 {
     public int rob(int[] nums) {
-        // Dynamic Programming optimize the space O(1)
+        // Dynamic Programming optimize the space
         // N: the length of `nums`
         // time: O(N)
         // space: O(1)

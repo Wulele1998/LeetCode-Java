@@ -18,6 +18,8 @@ LC 5. Longest Palindromic Substring \
 LC 6. Zigzag Conversion \
 LC 7. Reverse Integer \
 LC 8. String to Integer (atoi) \
+LC 45. Jump Game II \
+LC 55. Jump Game \
 LC 198. House Robber \
 LC 213. House Robber II \
 LC 740. Delete and Earn \
