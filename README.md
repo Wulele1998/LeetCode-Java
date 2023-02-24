@@ -6,6 +6,7 @@ LeetCode Solution in Java
 # Easy
 LC 1. Two Sum \
 LC 70. Climbing Stairs \
+LC 91. Decode Ways \ 
 LC 121. Best Time to Buy and Sell Stock \
 LC 509. Fibonacci Number \
 LC 746. Min Cost Climbing Stairs \
@@ -22,11 +23,13 @@ LC 8. String to Integer (atoi) \
 LC 45. Jump Game II \
 LC 53. Maximum Subarray \
 LC 55. Jump Game \
-LC 122. Best Time to Buy and Sell Stock II\
+LC 122. Best Time to Buy and Sell Stock II \
+LC 139. Word Break \
 LC 152. Maximum Product Subarray \
 LC 198. House Robber \
 LC 213. House Robber II \
 LC 309. Best Time to Buy and Sell Stock with Cooldown \
+LC 413. Arithmetic Slices \
 LC 714. Best Time to Buy and Sell Stock with Transaction Fee \
 LC 740. Delete and Earn \
 LC 918. Maximum Sum Circular Subarray \
