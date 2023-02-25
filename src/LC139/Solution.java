@@ -10,7 +10,7 @@ public class Solution {
         // recursion
         // N: the length of `s`
         // time: O(2 ^ N)
-        // space: O(N) => recursion stack
+        // space: O(N) => recursive stack
         return helper(s, new HashSet<>(wordDict), 0);
     }
 

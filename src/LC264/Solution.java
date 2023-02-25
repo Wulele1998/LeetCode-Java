@@ -2,32 +2,32 @@ package LC264;
 
 public class Solution {
     public int nthUglyNumber(int n) {
-        int num2 = 4;
-        int num3 = 3;
-        int num5 = 5;
-        if (n <= 5) {
-            return n;
-        }
-        int[] dp = new int[n + 1];
-        for (int i = 1; i <= 5; i++) {
-            dp[i] = i;
-        }
-        for (int i = 6; i <= n; i++) {
-            int next2 = num2 + 2;
-            int next3 = num3 + 3;
-            int next5 = num5 + 5;
-            dp[i] = Math.min(next2, Math.min(next3, next5));
-            if (next2 == dp[i]) {
-                num2 = next2;
+        // Dynamic Programming
+        // N: the number `n`
+        // time: O(N)
+        // space: O(N)
+        int[] dp = new int[n];
+        dp[0] = 1;
+        int index2 = 0, num2 = 2;
+        int index3 = 0, num3 = 3;
+        int index5 = 0, num5 = 5;
+
+        for (int i = 1; i < n; i++) {
+            dp[i] = Math.min(Math.min(num2, num3), num5);
+            if (num2 == dp[i]) {
+                index2++;
+                num2 = dp[index2] * 2;
             }
-            if (next3 == dp[i]) {
-                num3 = next3;
+            if (num3 == dp[i]) {
+                index3++;
+                num3 = dp[index3] * 3;
             }
-            if (next5 == dp[i]) {
-                num5 = next5;
+            if (num5 == dp[i]) {
+                index5++;
+                num5 = dp[index5] * 5;
             }
         }
 
-        return dp[n];
+        return dp[n - 1];
     }
 }

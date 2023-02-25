@@ -6,7 +6,7 @@ public class Solution3 {
         // recursion
         // N: the length of `nums`
         // time: O(N)
-        // space: O(N) => recursion stack
+        // space: O(N) => recursive stack
         helper(nums, nums.length - 1);
 
         return sum;
