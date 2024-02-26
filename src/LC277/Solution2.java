@@ -2,7 +2,23 @@ package LC277;
 
 public class Solution2 {
     public int findCelebrity(int n) {
-        return 0;
+        // time: O(N)
+        // space: O(1)
+        int candidate = 0;
+        for (int i = 1; i < n; i++) {
+            if (knows(candidate, i)) {
+                // update the candidate
+                candidate = i;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (i == candidate)
+                continue;
+            if (knows(candidate, i) || !knows(i, candidate))
+                return -1;
+        }
+
+        return candidate;
     }
 
     private boolean knows(int a, int b) {
