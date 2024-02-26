@@ -9,7 +9,7 @@ public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q)  {
         // N: the number of nodes in the tree
         // time: O(N)
-        // space: O(log N)
+        // space: O(N)
         if (p == null && q == null)
             return true;
         if (p == null || q == null)
