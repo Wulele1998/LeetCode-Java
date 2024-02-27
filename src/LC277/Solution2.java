@@ -1,5 +1,8 @@
 package LC277;
 
+/**
+ * LC 277. Find the Celebrity
+ */
 public class Solution2 {
     public int findCelebrity(int n) {
         // time: O(N)
