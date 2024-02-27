@@ -23,7 +23,7 @@ public class Solution2 {
 
         while (!dequeP.isEmpty() && !dequeQ.isEmpty()) {
             p = dequeP.pollFirst();
-            q = dequeQ.pollLast();
+            q = dequeQ.pollFirst();
             
              // in Java Deque cannot accept null, so be sure to make the null check
             if (p != null && q != null) {
