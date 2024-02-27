@@ -7,6 +7,7 @@ import library.TreeNode;
  */
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q)  {
+        // recursion
         // N: the number of nodes in the tree
         // time: O(N)
         // space: O(N)
