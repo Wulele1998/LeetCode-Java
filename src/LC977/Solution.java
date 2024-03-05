@@ -7,7 +7,7 @@ public class Solution {
     public int[] sortedSquares(int[] nums) {
         // N: the length of `nums`
         // time: O(N)
-        // space: O(N)
+        // space: O(1)
         int border = 0;
         int n = nums.length;
         int[] res = new int[n];
