@@ -12,6 +12,7 @@ public class Solution2 {
         // E: the number of flights
         // time: O((N + E) * K)
         // space: O(N)
+        
         int[] res = new int[n];
         Arrays.fill(res, Integer.MAX_VALUE);
         res[src] = 0;

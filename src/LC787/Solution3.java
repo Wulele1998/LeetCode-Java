@@ -12,6 +12,7 @@ public class Solution3 {
         // E: the number of flights
         // time: O(N + E * K * log(E * K))
         // space: O(N + E * K)
+        
         Map<Integer, List<int[]>> graph = new HashMap<>();
         for (int[] flight : flights) {
             graph.computeIfAbsent(flight[0], key -> new ArrayList<>()).add(new int[] { flight[1], flight[2] });
