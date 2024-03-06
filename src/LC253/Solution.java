@@ -10,17 +10,17 @@ public class Solution {
         // time: O(N log N)_
         // space: O(N)
         Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
-        PriorityQueue<Integer> miniHeap = new PriorityQueue<>(Comparator.comparingInt(o -> o));
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Comparator.comparingInt(o -> o));
 
-        miniHeap.add(intervals[0][1]);
+        minHeap.add(intervals[0][1]);
 
         for (int i = 1; i < intervals.length; i++) {
-            if (intervals[i][0] >= miniHeap.peek()) {
-                miniHeap.poll();
+            if (intervals[i][0] >= minHeap.peek()) {
+                minHeap.poll();
             }
-            miniHeap.add(intervals[i][1]);
+            minHeap.add(intervals[i][1]);
         }
 
-        return miniHeap.size();
+        return minHeap.size();
     }
 }

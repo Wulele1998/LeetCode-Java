@@ -18,14 +18,14 @@ public class Solution3 {
             graph.computeIfAbsent(flight[0], key -> new ArrayList<>()).add(new int[] { flight[1], flight[2] });
         }
 
-        PriorityQueue<int[]> miniHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
         // [distance, city, number of steps]
-        miniHeap.add(new int[] { 0, src, 0 });
+        minHeap.add(new int[] { 0, src, 0 });
         int[] stops = new int[n];
         Arrays.fill(stops, Integer.MAX_VALUE);
         
-        while (!miniHeap.isEmpty()) {
-            int[] cur = miniHeap.poll();
+        while (!minHeap.isEmpty()) {
+            int[] cur = minHeap.poll();
             int distance = cur[0];
             int city = cur[1];
             int stop = cur[2];
@@ -37,7 +37,7 @@ public class Solution3 {
             }
                 
             for (int[] adj : graph.getOrDefault(city, new ArrayList<>())) {
-                miniHeap.add(new int[] { adj[1] + distance, adj[0], stop + 1 });
+                minHeap.add(new int[] { adj[1] + distance, adj[0], stop + 1 });
             }
 
         }
