@@ -8,7 +8,7 @@ import java.util.*;
 public class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         // BFS
-        // N: the number of citys
+        // N: the number of cities
         // E: the number of flights
         // time: O(N + E * K)
         // space: O(N + E * K)
@@ -22,7 +22,7 @@ public class Solution {
             int from = flight[0];
             int to = flight[1];
             int dis = flight[2];
-            graph.computeIfAbsent(from, key -> new ArrayList<>()).add(new int[] { to, dis});
+            graph.computeIfAbsent(from, key -> new ArrayList<>()).add(new int[] { to, dis });
         }
         
         queue.add(new int[] { src, 0 });

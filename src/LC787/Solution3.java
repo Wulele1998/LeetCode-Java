@@ -18,8 +18,8 @@ public class Solution3 {
             graph.computeIfAbsent(flight[0], key -> new ArrayList<>()).add(new int[] { flight[1], flight[2] });
         }
 
-        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
-        // [distance, city, number of steps]
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        // [distance, city, number of stops]
         minHeap.add(new int[] { 0, src, 0 });
         int[] stops = new int[n];
         Arrays.fill(stops, Integer.MAX_VALUE);
