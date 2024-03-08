@@ -1,5 +1,8 @@
 package LC5;
 
+/**
+ * LC 5. Longest Palindromic Substring
+ */
 public class Solution {
     public String longestPalindrome(String s) {
         // Brute Force

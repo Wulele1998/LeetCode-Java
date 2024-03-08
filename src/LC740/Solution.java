@@ -8,7 +8,7 @@ public class Solution {
         // N: the length of `nums`
         // K: the max number in `nums`
         // time: O(N + K)
-        // space: O(N + K) N for the hashmap K for the dp array
+        // space: O(N + K), N for the hashmap K for the dp array
         HashMap<Integer, Integer> map = new HashMap<>();
         int maxNum = 0;
 
