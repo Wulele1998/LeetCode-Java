@@ -1,7 +1,11 @@
 package LC931;
 
+/**
+ * LC 931. Minimum Falling Path Sum
+ */
 public class Solution {
     public int minFallingPathSum(int[][] matrix) {
+        // DP: top-down
         // N: the `matrix` is N * N
         // time: O(N * N)
         // space: O(N * N)
