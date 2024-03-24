@@ -7,6 +7,9 @@ import library.ListNode;
  */
 public class Solution2 {
     public void reorderList(ListNode head) {
+        // N: the length of linked list
+        // time: O(N)
+        // space: O(1)
         // find the middle
         ListNode slow = head, fast = head;
         while (fast != null && fast.next != null) {
