@@ -1,5 +1,8 @@
 package LC58;
 
+/**
+ * LC 58. Length of Last Word
+ */
 public class Solution {
     public int lengthOfLastWord(String s) {
         // N: the length of `s`
@@ -8,7 +11,7 @@ public class Solution {
         int n = s.length();
         int index = n - 1;
         
-        while (s.charAt(index) == ' ' && index >= 0) {
+        while (index >= 0 && s.charAt(index) == ' ') {
             // end with a space
             index--;
         }
