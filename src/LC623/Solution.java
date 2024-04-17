@@ -9,6 +9,8 @@ import library.TreeNode;
  */
 public class Solution {
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
+        // N: the number of nodes in the tree
+        // time: O(N)
         if (root == null)
             return null;
         if (depth == 1) {
@@ -21,6 +23,7 @@ public class Solution {
         queue.add(root);
 
         for (int d = 1; d < depth - 1; d++) {
+            // BFS search by each layer of the tree
             int n = queue.size();
             
             for (int i = 0; i < n; i++) {
