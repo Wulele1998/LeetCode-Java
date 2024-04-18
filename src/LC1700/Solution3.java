@@ -6,7 +6,7 @@ import java.util.Queue;
 /**
  * LC 1700. Number of Students Unable to Eat Lunch
  */
-public class Solution {
+public class Solution3 {
     public int countStudents(int[] students, int[] sandwiches) {
         // brute force simulation
         // N: the length of `students`
@@ -16,26 +16,22 @@ public class Solution {
 
         Queue<Integer> queue = new LinkedList<>();
         int top = 0; // the index of top at sandwiches stack
-        
+
         for (int student : students) {
             queue.add(student);
         }
-
-        boolean flag = true;
-        while (top < n && flag) {
-            int num = queue.size();
-            flag = false;
-            for (int i = 0; i < num; i++) {
-                if (!queue.isEmpty() && sandwiches[top] == queue.peek()) {
-                    top++;
-                    queue.poll();
-                    flag = true;
-                } else {
-                    queue.add(queue.poll());
-                }
+        int missedCount = 0;
+        while (!queue.isEmpty() && top < n && missedCount < queue.size()) {
+            if (queue.peek() == sandwiches[top]) {
+                top++;
+                queue.poll();
+                missedCount = 0;
+            } else {
+                queue.add(queue.poll());
+                missedCount++;
             }
         }
 
-        return n - top;
-    }       
+        return queue.size();
+    }
 }
