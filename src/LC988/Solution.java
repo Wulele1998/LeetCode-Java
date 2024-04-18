@@ -2,9 +2,15 @@ package LC988;
 
 import library.TreeNode;
 
+/**
+ * LC 988. Smallest String Starting From Leaf
+ */
 public class Solution {
     String res = "";
     public String smallestFromLeaf(TreeNode root) {
+        // N: the number of the node
+        // time: O(N ^ 2)
+        // space: O(N ^ 2)
         DFS(root, "");
 
         return res;
