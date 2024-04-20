@@ -8,6 +8,7 @@ import library.TreeNode;
 public class Solution {
     String res = "";
     public String smallestFromLeaf(TreeNode root) {
+        // DFS
         // N: the number of the node
         // time: O(N ^ 2)
         // space: O(N ^ 2)

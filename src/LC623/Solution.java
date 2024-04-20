@@ -9,11 +9,14 @@ import library.TreeNode;
  */
 public class Solution {
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
+        // BFS
         // N: the number of nodes in the tree
         // time: O(N)
+        // space: O(N)
         if (root == null)
             return null;
         if (depth == 1) {
+            // add the node above the root
             TreeNode newRoot = new TreeNode(val);
             newRoot.left = root;
             return newRoot;
