@@ -11,19 +11,15 @@ public class Solution {
         // time: O(N * logN)
         // space: O(logN)
         int n = nums.length;
-
-        // corner case
         if (n <= 4) {
             return 0;
         }
-
         Arrays.sort(nums);
-        int res = Integer.MAX_VALUE;
-
+        int minDiff = Integer.MAX_VALUE;
         for (int i = 0; i < 4; i++) {
-            res = Math.min(res, nums[n - 4 + i] - nums[i]);
+            minDiff = Math.min(minDiff, nums[i + n - 4] - nums[i]);
         }
 
-        return res;
+        return minDiff;
     }
 }
