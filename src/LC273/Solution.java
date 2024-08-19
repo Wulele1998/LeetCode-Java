@@ -8,6 +8,8 @@ public class Solution {
     final String[] BELOW_TWENTY = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
     final String[] BELOW_HUNDRED = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
     public String numberToWords(int num) {
+        // time: O(1)
+        // space: O(1)
         if (num == 0) {
             return "Zero";
         }
