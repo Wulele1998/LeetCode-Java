@@ -9,6 +9,7 @@ public class Solution2 {
         // space: O(1)
         int candidate = 0;
         for (int i = 1; i < n; i++) {
+            // if candidate knows i, it cannot be candidate
             if (knows(candidate, i)) {
                 // update the candidate
                 candidate = i;
