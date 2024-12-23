@@ -2,6 +2,10 @@ package LC2064;
 
 public class Solution {
     public int minimizedMaximum(int n, int[] quantities) {
+        // N: the length of `quantities`
+        // M: the max value in `quantities`
+        // time: O(N * logM)
+        // space: O(1)
         int maxValue = 0;
         for (int quantity : quantities) {
             maxValue = Math.max(maxValue, quantity);

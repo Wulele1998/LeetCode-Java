@@ -5,6 +5,9 @@ package LC2109;
  */
 public class Solution {
     public String addSpaces(String s, int[] spaces) {
+        // N: the length of `s`
+        // time: O(N)
+        // space: O(N)
         StringBuilder sb = new StringBuilder();
         int i = 0;
         int j = 0;

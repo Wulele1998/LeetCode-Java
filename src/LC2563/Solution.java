@@ -7,6 +7,7 @@ public class Solution {
         // binary search
         // N: the length of `nums`
         // time: O(N * logN)
+        // space: O(logN), sort the `nums`
         long res = 0;
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
