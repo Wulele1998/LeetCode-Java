@@ -1,34 +1,42 @@
 package LC1066;
 
+/**
+ * LC 1066. Campus Bikes II
+ */
 public class Solution {
     int res = Integer.MAX_VALUE;
-    boolean[] visitedBike;
+    boolean[] visitedBikes;
 
     public int assignBikes(int[][] workers, int[][] bikes) {
         // greedy backtracking
         // time: O(M!)
         // space: O(N) + O(M) recursion stack and the visited boolean array
-        visitedBike = new boolean[bikes.length];
+        visitedBikes = new boolean[bikes.length];
         miniDistanceSum(workers, bikes, 0, 0);
+
         return res;
     }   
 
-    private void miniDistanceSum(int[][] works, int[][] bikes, int index, int curDistance) {
-        if (index == works.length) {
-            res = Math.min(res, curDistance);
-            return; // one branch finished
+    private void miniDistanceSum(int[][] workers, int[][] bikes, int workerIndex, int distance) {
+        if (workerIndex == workers.length) {
+            // all workers get bike assigned, update the result
+            res = Math.min(res, distance);
+            return;
         }
-        
-        if (curDistance >= res) {
-            return; // ended in advance
+
+        if (distance > res) {
+            // if the current distance is larger than the result, no need to proceed anymore
+            return;
         }
-        
-        for (int i = 0; i < bikes.length; i++) {
-            if (!visitedBike[i]) {
-                visitedBike[i] = true;
-                miniDistanceSum(works, bikes, index + 1, curDistance + getDistance(works[index], bikes[i]));
+
+        for (int bikeIndex = 0; bikeIndex < bikes.length; bikeIndex++) {
+            if (!visitedBikes[bikeIndex]) {
+                visitedBikes[bikeIndex] = true;
+                int extraDistance = getDistance(workers[workerIndex], bikes[bikeIndex]);
+                miniDistanceSum(workers, bikes, workerIndex + 1, distance + extraDistance);
+
                 // backtrack
-                visitedBike[i] = false;
+                visitedBikes[bikeIndex] = false;
             }
         }
     }

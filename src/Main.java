@@ -1,7 +1,7 @@
-import java.util.ArrayList;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +20,7 @@ public class Main {
             }
         };
 
-
+        String path = "/a/b/c";
+        System.out.println(Arrays.toString(path.split("/")));
     }
 }

@@ -10,21 +10,17 @@ public class Solution {
         // time: O(M + N + Max(M, N))
         // space: O(M + N)
         String[] v1 = version1.split("\\.");
-        String[] v2 = version1.split("\\.");
+        String[] v2 = version2.split("\\.");
 
-        int i = 0;
-        int j = 0;
-        while (i < v1.length || j < v2.length) {
-            int num1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;
-            int num2 = j < v2.length ? Integer.parseInt(v2[i]) : 0;
-
-            if (num1 > num2) {
+        int subV1;
+        int subV2;
+        for (int i = 0; i < Math.max(v1.length, v2.length); i++) {
+            subV1 = i < v1.length ? Integer.parseInt(v1[i]) : 0;
+            subV2 = i < v2.length ? Integer.parseInt(v2[i]) : 0;
+            if (subV1 > subV2) {
                 return 1;
-            } else if (num1 < num2) {
+            } else if (subV1 < subV2) {
                 return -1;
-            } else {
-                i++;
-                j++;
             }
         }
 

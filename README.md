@@ -3,6 +3,7 @@
 ## Good Questions
 - [LC 221. Maximal Square](https://leetcode.com/problems/maximal-square/description/)
 - [LC 320. Generalized Abbreviation](https://leetcode.com/problems/generalized-abbreviation/description/)
+- [LC 329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/)
 - [LC 368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/description/) 
 - [LC 386. Lexicographical Numbers](https://leetcode.com/problems/lexicographical-numbers/description/)
 - [LC 494. Target Sum](https://leetcode.com/problems/target-sum/description/)
