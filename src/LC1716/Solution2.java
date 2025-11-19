@@ -1,5 +1,9 @@
 package LC1716;
 
+/**
+ * Oct 25, 2025
+ * LC 1716. Calculate Money in Leetcode Bank
+ */
 public class Solution2 {
     public int totalMoney(int n) {
         // N: `n`

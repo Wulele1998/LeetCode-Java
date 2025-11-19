@@ -1,5 +1,9 @@
 package LC2125;
 
+/**
+ * Oct 27, 2025
+ * LC 2125. Number of Laser Beams in a Bank
+ */
 public class Solution {
     public int numberOfBeams(String[] bank) {
         // M: the length of `bank`
