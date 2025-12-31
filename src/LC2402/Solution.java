@@ -4,12 +4,15 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+/**
+ * LC 2402. Meeting Rooms III
+ */
 public class Solution {
     public int mostBooked(int n, int[][] meetings) {
-        // N: the length of `meetings`
-        // K: the number of meeting rooms `n`
-        // time: O(N log N + N log K)
-        // space: O(log N + K)
+        // M: the length of `meetings`
+        // N: the number of meeting rooms `n`
+        // time: O(M log M + M log N + N log N)
+        // space: O(log M + N)
         int[] meetingCount = new int[n];
         Arrays.sort(meetings, Comparator.comparingInt(o -> o[0]));
         // [end time, number]

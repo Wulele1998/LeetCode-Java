@@ -5,7 +5,7 @@ package LC221;
  */
 public class Solution {
     public int maximalSquare(char[][] matrix) {
-        // DP
+        // Dynamic Programming, bottom-up
         // M: the number of rows
         // N: the number of columns
         // time: O(M * N)
