@@ -1,5 +1,8 @@
 package LC1230;
 
+/**
+ * LC 1230. Toss Strange Coins
+ */
 public class Solution {
     public double probabilityOfHeads(double[] prob, int target) {
         // DP

@@ -22,5 +22,8 @@ public class Main {
 
         String path = "/a/b/c";
         System.out.println(Arrays.toString(path.split("/")));
+
+        System.out.println(System.nanoTime());
+        System.out.println(System.currentTimeMillis());
     }
 }
