@@ -37,24 +37,4 @@ public class Solution {
 
         return need <= n;
     }
-
-    private boolean isValidSimulate(int n, int[] quantities, int m) {
-        int productIndex = 0;
-        int remaining = quantities[productIndex];
-
-        // go through each store
-        for (int i = 0; i < n; i++) {
-            if (remaining > m) {
-                remaining -= m;
-            } else {
-                productIndex++;
-                if (productIndex == quantities.length) {
-                    return true;
-                }
-                remaining = quantities[productIndex];
-            }
-        }
-
-        return false;
-    }
 }

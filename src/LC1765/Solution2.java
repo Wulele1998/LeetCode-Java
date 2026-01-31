@@ -1,8 +1,6 @@
 package LC1765;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * LC 1765. Map of Highest Peak

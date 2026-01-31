@@ -1,9 +1,5 @@
 package LC1756;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 public class MRUQueue2 {
     // use linked list
     class ListNode {

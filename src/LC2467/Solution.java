@@ -30,7 +30,7 @@ public class Solution {
         findBobPathDFS(bob, 0);
         // findBobPathBFS(bob);
         // BFS for Alice
-//        aliceBFS(amount);
+        // aliceBFS(amount);
 
         // DFS for Alice
         Arrays.fill(visited, false); // reset the visited array for Alice

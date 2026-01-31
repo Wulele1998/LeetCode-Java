@@ -1,7 +1,5 @@
 package LC1653;
 
-import java.util.Arrays;
-
 /**
  * LC 1653. Minimum Deletions to Make String Balanced
  */

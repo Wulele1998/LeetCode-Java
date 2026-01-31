@@ -8,11 +8,14 @@ import java.util.Stack;
 public class Solution {
     int res = 0;
     public int maximumGain(String s, int x, int y) {
+        // N: the length of `s`
+        // time: O(N)
+        // space: O(N)
         String higher = x >= y ? "ab" : "ba";
         String lower = higher.equals("ab") ? "ba" : "ab";
 
         String firstRound = removeSubstring(s, higher, Math.max(x, y));
-        String secondRound = removeSubstring(firstRound, lower, Math.min(x, y));
+        removeSubstring(firstRound, lower, Math.min(x, y));
 
         return res;
 

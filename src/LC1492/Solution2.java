@@ -1,9 +1,5 @@
 package LC1492;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
 /**
  * LC 1492. The kth Factor of n
  */

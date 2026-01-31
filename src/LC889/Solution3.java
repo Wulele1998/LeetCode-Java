@@ -2,9 +2,6 @@ package LC889;
 
 import library.TreeNode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * LC 889. Construct Binary Tree from Preorder and Postorder Traversal
  */

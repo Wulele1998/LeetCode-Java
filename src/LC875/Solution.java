@@ -1,7 +1,5 @@
 package LC875;
 
-import java.util.Arrays;
-
 /**
  * LC 875. Koko Eating Bananas
  */

@@ -1,8 +1,6 @@
 package LC505;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * LC 505. The Maze II

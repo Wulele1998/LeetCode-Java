@@ -21,7 +21,6 @@ public class Solution {
         }
         HashMap<List<String>, Integer> patternToTimes = new HashMap<>();
         for (List<WebSiteVisit> visitList : userToVisit.values()) {
-            int n = visitList.size();
             HashSet<List<String>> set = new HashSet<>();
             for (int i = 0; i < visitList.size() - 2; i++) {
                 for (int j = i + 1; j < visitList.size() - 1; j++) {
