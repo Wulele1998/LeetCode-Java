@@ -56,8 +56,6 @@ public class CacheTTL<K, V> {
         return get(key) != null;
     }
 
-
-
     public void cleanUp() {
         // ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         long currentTimeStamp = System.currentTimeMillis();

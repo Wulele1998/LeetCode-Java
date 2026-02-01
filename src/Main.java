@@ -1,29 +1,15 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.Comparator;
+import OA.ShortestPath;
 
 public class Main {
     public static void main(String[] args) {
-        int a = 10;
-        int b = -102;
+        int[][] edges = new int[][] {{0, 3, 5}, {0, 1, 3}, {1, 0, 2}, {1, 3, 4}, {2, 1, 6}, {3, 2, 2}};
+        ShortestPath floydWarshall = new ShortestPath(4, edges);
 
-        System.out.println(b / a);
-        System.out.println(b % a);
-        System.out.println(Math.floorDiv(b, a));
-        System.out.println(Math.floorMod(b, a));
+        floydWarshall.floydWarshall();
+        floydWarshall.getShortestPath(1, 2);
 
-        Comparator<Integer> comparator = new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
-            }
-        };
-
-        String path = "/a/b/c";
-        System.out.println(Arrays.toString(path.split("/")));
-
-        System.out.println(System.nanoTime());
-        System.out.println(System.currentTimeMillis());
+        ShortestPath dijkstra = new ShortestPath(4, edges);
+        dijkstra.dijkstra(1);
+        dijkstra.getShortestPath(1, 2);
     }
 }

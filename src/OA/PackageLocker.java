@@ -2,6 +2,7 @@ package OA;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 
@@ -25,13 +26,20 @@ class Locker {
     }
 }
 
-public class Practice1 {
+public class PackageLocker {
     List<Package> packages;
     List<Locker> lockers;
     HashMap<Integer, Queue<Locker>> lockerMap;
     HashMap<Package, Locker> packageToLocker;
     int minSize;
     int maxSize;
+
+    public PackageLocker() {
+        this.lockerMap = new HashMap<>();
+        this.packageToLocker = new HashMap<>();
+        this.packages = new ArrayList<>();
+        this.lockers = new ArrayList<>();
+    }
 
     private void init() {
         this.minSize = 1;

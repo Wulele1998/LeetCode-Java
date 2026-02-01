@@ -7,13 +7,12 @@ import java.util.Queue;
  * LC 286. Walls and Gates
  */
 public class Solution {
-    // BFS
+    // BFS, start the search from all the gates
     // time: O(M * N)
     // space: O(M * N)
     public void wallsAndGates(int[][] rooms) {
         final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         final int GATE = 0;
-        final int WALL = -1;
         final int EMPTY = Integer.MAX_VALUE;
         int m = rooms.length;
         int n = rooms[0].length;
