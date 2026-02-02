@@ -3,17 +3,15 @@ package LC2977;
 import java.util.Map;
 import java.util.List;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Set;
 
 /**
  * Jan 30, 2026
  * LC 2977. Minimum Cost to Convert String II
  */
 
-public class Solution {
+public class Solution2 {
     public long minimumCost(String source, String target, String[] original, String[] changed, int[] cost) {
         Map<String, Map<String, Integer>> minCostResult = floydWarshall(original, changed, cost);
 
@@ -27,31 +25,21 @@ public class Solution {
         Arrays.fill(dp, Long.MAX_VALUE);
         dp[0] = 0L;
         
-        Set<Integer> lengthSet = new HashSet<>();
-        for (String s : minCostResult.keySet()) {
-            lengthSet.add(s.length());
-        }
-
         for (int i = 1; i <= n; i++) {
-            int index = i - 1; // the index fo string
-            if (dp[i - 1] == Long.MAX_VALUE) {
-                continue;
+            int index = i - 1;
+            if (source.charAt(index) == target.charAt(index)) {
+                dp[i] = Math.min(dp[i], dp[i - 1]); // 
             }
-            
-            if (source.charAt(i - 1) == target.charAt(i - 1)) {
-                dp[i] = Math.min(dp[i], dp[i - 1]); 
-            }
-
-            for (int len : lengthSet) {
-                if (index + len > n) {
-                    continue;
-                }
-
-                String subSource = source.substring(index, index + len);
-                String subTarget = target.substring(index, index + len);
-                
-                if (minCostResult.containsKey(subSource) && minCostResult.get(subSource).containsKey(subTarget)) {
-                    dp[index + len] = Math.min(dp[index + len], minCostResult.get(subSource).get(subTarget) + dp[index]);
+        
+            for (int j = index; j >= 0; j--) {
+                String subSource = source.substring(j, i);
+                String subTarget = target.substring(j, i);
+                if (subSource.equals(subTarget)) {
+                    dp[i] = Math.min(dp[i], dp[j]);
+                } else {
+                    if (minCostResult.containsKey(subSource) && minCostResult.get(subSource).containsKey(subTarget) && dp[j] != Long.MAX_VALUE) {
+                        dp[i] = Math.min(dp[i], dp[j] + minCostResult.get(subSource).get(subTarget));
+                    }
                 }
             }
         }

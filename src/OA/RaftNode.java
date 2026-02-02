@@ -18,7 +18,7 @@ public class RaftNode {
     public RaftNode(int id) {
         this.id = id;
         this.state = State.FOLLOWER;
-        voteFor = null;
+        this.voteFor = null;
     }
 
     public void startElection(List<RaftNode> peers) {
