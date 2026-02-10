@@ -26,16 +26,11 @@ public class Solution2 {
         }
 
         TreeInfo left = isBalancedTreeHelper(root.left);
-        if (!left.isBalanced) {
-            return new TreeInfo(left.height, false);
-        }
         TreeInfo right = isBalancedTreeHelper(root.right);
-        if (!right.isBalanced) {
-            return new TreeInfo(right.height, false);
-        }
-
-        if (Math.abs(left.height - right.height) > 1) {
-            return new TreeInfo(Math.max(left.height, right.height) + 1, false);
+        int height = Math.max(left.height, right.height) + 1;
+        
+        if (!left.isBalanced || !right.isBalanced || Math.abs(left.height - right.height) > 1) {
+            return new TreeInfo(height, false);
         }
 
         return new TreeInfo(Math.max(left.height, right.height) + 1, true);
