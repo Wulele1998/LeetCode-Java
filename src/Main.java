@@ -1,15 +1,16 @@
-import OA.ShortestPath;
+import OA.DinosaurSpeed;
+import OA.OneEditDistance;
+
+import static org.junit.Assert.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[][] edges = new int[][] {{0, 3, 5}, {0, 1, 3}, {1, 0, 2}, {1, 3, 4}, {2, 1, 6}, {3, 2, 2}};
-        ShortestPath floydWarshall = new ShortestPath(4, edges);
+        int a = 10;
+        int b = -102;
 
-        floydWarshall.floydWarshall();
-        floydWarshall.getShortestPath(1, 2);
-
-        ShortestPath dijkstra = new ShortestPath(4, edges);
-        dijkstra.dijkstra(1);
-        dijkstra.getShortestPath(1, 2);
+        System.out.println(b / a);
+        System.out.println(b % a);
+        System.out.println(Math.floorDiv(b, a));
+        System.out.println(Math.floorMod(b, a));
     }
 }
