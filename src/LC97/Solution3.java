@@ -1,7 +1,15 @@
 package LC97;
 
+import java.util.Arrays;
+
 public class Solution3 {
+    // M: the length s1
+    // N: the length s2
+    // time: O(M + N)
+    // space: O(M * N)
+    int[][] memo;
     public boolean isInterleave(String s1, String s2, String s3) {
+        // DP, top-down
         int n1 = s1.length();
         int n2 = s2.length();
         int n3 = s3.length();
@@ -10,26 +18,27 @@ public class Solution3 {
         }
         int[][] memo = new int[n1][n2];
         for (int i = 0; i < n1; i++) {
-            for (int j = 0; j < n2; j++) {
-                memo[i][j] = -1;
-            }
+            Arrays.fill(memo[i], -1);
         }
 
-        return backtrackMemo(s1, s2, s3, 0, 0, 0, memo);
+        return backtrackMemo(s1, s2, s3, 0, 0);
     }
 
-    private boolean backtrackMemo(String s1, String s2, String s3, int i, int j, int k, int[][] memo) {
-        if (k == s3.length()) {
-            return true;
+    private boolean backtrackMemo(String s1, String s2, String s3, int i, int j) {
+        if (i == s1.length()) {
+            return s2.substring(j).equals(s3.substring(i + j));
         }
+        if (j == s2.length()) {
+            return s1.substring(i).equals(s3.substring(i + j));
+        }
+
+        // have get the result
         if (memo[i][j] != -1) {
             return memo[i][j] == 1;
         }
-        if (i < s1.length() && s1.charAt(i) == s3.charAt(k) && backtrackMemo(s1, s2, s3, i + 1, j, k + 1, memo)) {
-            memo[i][j] = 1;
-            return true;
-        }
-        if (j < s2.length() && s2.charAt(j) == s3.charAt(k) && backtrackMemo(s1, s2, s3, i, j + 1, k + 1, memo)) {
+
+        if ((s1.charAt(i) == s3.charAt(i + j) && backtrackMemo(s1, s2, s3, i + 1, j))
+                || (s2.charAt(j) == s3.charAt(i + j) && backtrackMemo(s1, s2, s3, i, j + 1))) {
             memo[i][j] = 1;
             return true;
         }

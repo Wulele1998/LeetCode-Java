@@ -14,6 +14,10 @@ public class Solution2 {
         List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
 
+        if (root == null) {
+            return res;
+        }
+
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
             // go to the leftmost node

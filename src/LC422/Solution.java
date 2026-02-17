@@ -8,21 +8,20 @@ public class Solution {
         // time: O(N ^ 2)
         // space: O(N)
         int n = words.size();
-        
-        for (int k = 0; k < n; k++) {
-            String row = words.get(k);
-            StringBuilder col = new StringBuilder();
-            for (int i = 0; i < n; i++) {
-                if (words.get(i).length() - 1 < k) {
-                    col.append("");
-                } else {
-                    col.append(words.get(i).charAt(k));
-                }
-            }
-            if (!row.equals(col.toString())) {
+        for (int i = 0; i < n; i++) {
+            if (words.get(i).length() > n) {
                 return false;
             }
+
+            for (int j = 0; j < n; j++) {
+                char c1 = j < words.get(i).length() ? words.get(i).charAt(j) : ' ';
+                char c2 = i < words.get(j).length() ? words.get(j).charAt(i) : ' ';
+                if (c1 != c2) {
+                    return false;
+                }
+            }
         }
+
         return true;
     }
 }

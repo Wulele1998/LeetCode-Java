@@ -2,7 +2,7 @@ package LC97;
 
 public class Solution2 {
     public boolean isInterleave(String s1, String s2, String s3) {
-        // Dynamic Programming
+        // Dynamic Programming, bottom-up
         // time: O(M * N)
         // space: O(M * N)
         int n1 = s1.length();

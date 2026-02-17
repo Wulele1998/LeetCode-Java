@@ -24,13 +24,8 @@ public class Solution {
             return;
         }
 
-        if (root.left != null) {
-            postOrderHelper(root.left);
-        }
-
-        if (root.right != null) {
-            postOrderHelper(root.right);
-        }
+        postOrderHelper(root.left);
+        postOrderHelper(root.right);
 
         res.add(root.val);
     }
