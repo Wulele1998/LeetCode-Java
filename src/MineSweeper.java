@@ -153,6 +153,8 @@ public class MineSweeper {
                 System.out.println("Invalid coordinate! Please re-enter");
             }
         }
+        
+        sc.close();
 
     }
 }
