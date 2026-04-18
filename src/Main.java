@@ -1,4 +1,4 @@
-import java.util.TreeMap;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,5 +20,18 @@ public class Main {
 
         String s = map.get(10);
         System.out.println(s == null ? "null" : s);
+
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        Map<Character, Integer> map1 = new HashMap<>();
+        Map<Character, Integer> map2 = new HashMap<>();
+        map1.put('#', 100);
+        map2.put('#', 100);
+
+        System.out.println(map1.get('#').equals((map2.get('#'))));
+
+        Map<Integer, List<Integer>> map3 = new HashMap<>();
+        map3.computeIfAbsent(1, _ -> new ArrayList<>()).add(0);
+        System.out.println(map3.get(1));
     }
 }

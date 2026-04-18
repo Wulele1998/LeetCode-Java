@@ -3,6 +3,8 @@ package LC97;
 public class Solution2 {
     public boolean isInterleave(String s1, String s2, String s3) {
         // Dynamic Programming, bottom-up
+        // M: the length of `s1`
+        // N: the length of `s2`
         // time: O(M * N)
         // space: O(M * N)
         int n1 = s1.length();
@@ -18,9 +20,9 @@ public class Solution2 {
                 if (i == 0 && j == 0) {
                     dp[i][j] = true;
                 } else if (i == 0) {
-                    dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1);
+                    dp[i][j] = dp[0][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
                 } else if (j == 0) {
-                    dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1);
+                    dp[i][j] = dp[i - 1][0] && s1.charAt(i - 1) == s3.charAt(i - 1);
                 } else {
                     dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1))
                             || (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1));

@@ -1,7 +1,7 @@
 package LC97;
 
 /**
- * LC
+ * LC 97. Interleaving String
  */
 public class Solution {
     // backtrack brute force

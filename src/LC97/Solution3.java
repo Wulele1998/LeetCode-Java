@@ -3,47 +3,59 @@ package LC97;
 import java.util.Arrays;
 
 public class Solution3 {
-    // M: the length s1
-    // N: the length s2
-    // time: O(M + N)
+    // M: the length `s1`
+    // N: the length `s2`
+    // time: O(M * N)
     // space: O(M * N)
-    int[][] memo;
+    public static final int MATCH = 1;
+    public static final int NOT_MATCH = 0;
+    public static final int UNKNOWN = -1;
+    private int[][] memo;
     public boolean isInterleave(String s1, String s2, String s3) {
-        // DP, top-down
+        // DP top-down memoization
         int n1 = s1.length();
         int n2 = s2.length();
         int n3 = s3.length();
-        if (n1 + n2 != n3) {
+        // length check
+        if (n3 != n1 + n2) {
             return false;
         }
-        int[][] memo = new int[n1][n2];
-        for (int i = 0; i < n1; i++) {
-            Arrays.fill(memo[i], -1);
+
+        memo = new int[n1 + 1][n2 + 1];
+        // initialize the `memo`,
+        for (int[] row : memo) {
+            Arrays.fill(row, UNKNOWN);
         }
 
-        return backtrackMemo(s1, s2, s3, 0, 0);
+        return checkInterleave(s1, s2, s3, 0, 0) == MATCH;
     }
 
-    private boolean backtrackMemo(String s1, String s2, String s3, int i, int j) {
-        if (i == s1.length()) {
-            return s2.substring(j).equals(s3.substring(i + j));
-        }
-        if (j == s2.length()) {
-            return s1.substring(i).equals(s3.substring(i + j));
+    private int checkInterleave(String s1, String s2, String s3, int index1, int index2) {
+        // base case
+        if (index1 == s1.length() && index2 == s2.length()) {
+            return MATCH;
         }
 
-        // have get the result
-        if (memo[i][j] != -1) {
-            return memo[i][j] == 1;
+        // check memo
+        if (memo[index1][index2] != UNKNOWN) {
+            return memo[index1][index2];
         }
 
-        if ((s1.charAt(i) == s3.charAt(i + j) && backtrackMemo(s1, s2, s3, i + 1, j))
-                || (s2.charAt(j) == s3.charAt(i + j) && backtrackMemo(s1, s2, s3, i, j + 1))) {
-            memo[i][j] = 1;
-            return true;
+        int res1 = UNKNOWN;
+        int res2 = UNKNOWN;
+        if (index1 < s1.length() && s1.charAt(index1) == s3.charAt(index1 + index2)) {
+            res1 = checkInterleave(s1, s2, s3, index1 + 1, index2);
+        }
+        if (index2 < s2.length() && s2.charAt(index2) == s3.charAt(index1 + index2)) {
+            res2 = checkInterleave(s1, s2, s3, index1, index2 + 1);
         }
 
-        memo[i][j] = 0;
-        return false;
+        if (res1 == MATCH || res2 == MATCH) {
+            memo[index1][index2] = MATCH;
+        } else {
+            memo[index1][index2] = NOT_MATCH;
+        }
+
+        return memo[index1][index2];
     }
 }

@@ -4,17 +4,20 @@ package LC494;
  * LC 494. Target Sum
  */
 public class Solution3 {
-
     public int findTargetSumWays(int[] nums, int target) {
-        // DP
+        // DP bottom-up
         // N: the length of `nums`
-        // time: O(N * SUM(nums))
-        // space: O(N * SUM(nums))
+        // M: the sum of `nums`
+        // time: O(N * M)
+        // space: O(N * M)
+
         int totalSum = 0;
         for (int num : nums) {
             totalSum += num;
         }
         int n = nums.length;
+        if (target > totalSum || target < -totalSum)
+            return 0;
 
         // [-totalSum, totalSum]
         int[][] dp = new int[n][totalSum * 2 + 1];

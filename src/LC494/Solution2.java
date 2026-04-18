@@ -6,45 +6,39 @@ import java.util.Arrays;
  * LC 494. Target Sum
  */
 public class Solution2 {
-    int totalSum = 0;
+    // DP top-down memoization
+    // N: the length of `nums`
+    // M: the sum of `nums`
+    // time: O(N * M)
+    // space: O(N * M)
+    private int[][] memo;
+    private int sum;
+
     public int findTargetSumWays(int[] nums, int target) {
-        // recursion with memorization
-        // N: the length of `nums`
-        // time: O(N * SUM(nums))
-        // space: O(N * SUM(nums))
+        sum = 0;
         for (int num : nums) {
-            totalSum += num;
+            sum += num;
         }
-        int n = nums.length;
-
-        // [-totalSum, totalSum]
-        int[][] memo = new int[n][totalSum * 2 + 1];
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(memo[i], Integer.MIN_VALUE);
+        if (sum < target || -sum > target) {
+            return 0;
+        }
+        memo = new int[nums.length + 1][sum * 2 + 1];
+        for (int[] row : memo) {
+            Arrays.fill(row, -1);
         }
 
-        return recursion(nums, 0, 0, target, memo);
+        return findWays(nums, target, 0, 0);
     }
 
-    private int recursion(int[] nums, int index, int sum, int target, int[][] memo) {
+    private int findWays(int[] nums, int target, int index, int current) {
         if (index == nums.length) {
-            if (sum == target) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } else {
-            if (memo[index][sum + totalSum] != Integer.MIN_VALUE) {
-                // the value has been calculated before
-                return memo[index][sum + totalSum];
-            } else {
-                // positive
-                int pos = recursion(nums, index + 1, sum + nums[index], target, memo);
-                int neg = recursion(nums, index + 1, sum - nums[index], target, memo);
-                memo[index][sum + totalSum] = pos + neg;
-            }
-
-            return memo[index][sum + totalSum];
+            return current == target ? 1 : 0;
         }
+
+        if (memo[index][sum + current] != -1)
+            return memo[index][sum + current];
+
+        memo[index][sum + current] = findWays(nums, target, index + 1, current + nums[index]) + findWays(nums, target, index + 1, current - nums[index]);
+        return memo[index][sum + current];
     }
 }
