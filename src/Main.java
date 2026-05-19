@@ -33,5 +33,10 @@ public class Main {
         Map<Integer, List<Integer>> map3 = new HashMap<>();
         map3.computeIfAbsent(1, _ -> new ArrayList<>()).add(0);
         System.out.println(map3.get(1));
+
+        List<Integer> list = new ArrayList<>();
+        list.remove(0);
+        System.out.println(list);
+
     }
 }

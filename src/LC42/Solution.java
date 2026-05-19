@@ -2,6 +2,7 @@ package LC42;
 
 public class Solution {
     public int trap(int[] height) {
+        // two pointer
         // time: O(N)
         // space: O(N)
         int n = height.length;

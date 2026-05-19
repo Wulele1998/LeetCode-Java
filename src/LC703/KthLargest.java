@@ -1,11 +1,13 @@
 package LC703;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * LC 703. Kth Largest Element in a Stream
  */
 public class KthLargest {
-    PriorityQueue<Integer> minHeap;
+    Queue<Integer> minHeap;
     int k;
     public KthLargest(int k, int[] nums) {
         minHeap = new PriorityQueue<>();

@@ -35,10 +35,10 @@ public class Solution2 {
         // s[i] == s[j] and dp[i+1][j-1] is true => dp[i][j] is true
         for (int i = n - 1; i >= 0; i--) {
             // since we get the value of dp[i][] from dp[i+1][]
-            // we should inverse traversal on i
+            // we should be inverse traversal on i
             for (int j = i + 2; j < n; j++) {
                 // since we get the value of dp[][j] from dp[][j-1]
-                // we should normal traversal on j
+                // we should be normal traversal on j
                if (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]) {
                    // upload the length
                    dp[i][j] = true;

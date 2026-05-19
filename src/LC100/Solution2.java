@@ -1,6 +1,6 @@
 package LC100;
 
-import java.util.Deque;
+import java.util.Queue;
 import java.util.LinkedList;
 
 import library.TreeNode;
@@ -16,27 +16,27 @@ public class Solution2 {
         if (!check(p, q))
             return false;
         
-        Deque<TreeNode> dequeP = new LinkedList<>();
-        Deque<TreeNode> dequeQ = new LinkedList<>();
-        dequeP.addLast(p);
-        dequeQ.addLast(q);
+        Queue<TreeNode> queueP = new LinkedList<>();
+        Queue<TreeNode> queueQ = new LinkedList<>();
+        queueP.offer(p);
+        queueQ.offer(q);
 
-        while (!dequeP.isEmpty() && !dequeQ.isEmpty()) {
-            p = dequeP.pollFirst();
-            q = dequeQ.pollFirst();
+        while (!queueP.isEmpty() && !queueQ.isEmpty()) {
+            p = queueP.poll();
+            q = queueQ.poll();
             
              // in Java Deque cannot accept null, so be sure to make the null check
             if (p != null && q != null) {
                
                 if (!check(p.left, q.left))
                     return false;
-                dequeP.addLast(p.left);
-                dequeQ.addLast(q.left);
+                queueP.offer(p.left);
+                queueQ.offer(q.left);
 
                 if (!check(p.right, q.right))
                     return false;
-                dequeP.addLast(p.right);
-                dequeQ.addLast(q.right);
+                queueP.offer(p.right);
+                queueQ.offer(q.right);
             }
         }
 

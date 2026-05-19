@@ -10,7 +10,7 @@ import java.util.Queue;
 public class Solution {
     // M: the number of rows
     // N: the number of columns
-    // time: O(M * N *
+    // time: O(M * N * MAX(M, N)
     public final static int EMPTY = 0;
     public final static int WALL = 1;
     public final static int[][] DIRECTIONS = new int[][] {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};

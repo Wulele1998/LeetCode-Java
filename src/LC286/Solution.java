@@ -10,10 +10,11 @@ public class Solution {
     // BFS, start the search from all the gates
     // time: O(M * N)
     // space: O(M * N)
+    public static final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    public static final int GATE = 0;
+    public static final int EMPTY = Integer.MAX_VALUE;
     public void wallsAndGates(int[][] rooms) {
-        final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        final int GATE = 0;
-        final int EMPTY = Integer.MAX_VALUE;
+
         int m = rooms.length;
         int n = rooms[0].length;
         Queue<int[]> queue = new LinkedList<>();

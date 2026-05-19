@@ -1,9 +1,6 @@
 package OA;
 
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class ShortestPath {
     public static final int INF = Integer.MAX_VALUE;
@@ -11,7 +8,7 @@ public class ShortestPath {
     int n; // number of nodes from 0 to n - 1
     int[][] edges; // edges, [start, end, weight]
     int[][] result;
-    int[][] nextNode;
+    int[][] preNode;
     List<List<int[]>> graph;
 
     public ShortestPath(int n, int[][] edges) {
@@ -19,15 +16,45 @@ public class ShortestPath {
         this.edges = edges;
 
         result = new int[n][n];
-        nextNode = new int[n][n]; // find the next node to know the shortest path
+        preNode = new int[n][n]; // find the next node to know the shortest path
         graph = new ArrayList<>();
 
         // init the arrays
         for (int i = 0; i < n; i++) {
             Arrays.fill(result[i], INF);
             result[i][i] = 0;
-            Arrays.fill(nextNode[i], -1);
+            Arrays.fill(preNode[i], -1);
             graph.add(new ArrayList<>());
+        }
+    }
+
+    public void bellmanFord(int startNode) {
+        Arrays.fill(result[startNode], INF);
+        result[startNode][startNode] = 0;
+
+        // execute edge relaxation v - 1 times
+        for (int i = 1; i < n; i++) {
+            for (int[] edge : edges) {
+                // check the edge
+                int u = edge[0];
+                int v = edge[1];
+                int weight = edge[2];
+                if (result[startNode][u] != INF && result[startNode][u] + weight < result[startNode][v]) {
+                    result[startNode][v] = result[startNode][u] + weight;
+                    preNode[startNode][u] = v;
+                }
+            }
+        }
+
+        // detect negative cycle
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int weight = edge[2];
+            if (result[startNode][u] != INF && result[startNode][u] + weight < result[startNode][v]) {
+                System.out.println("Negative cycle detected");
+                return;
+            }
         }
     }
 
@@ -39,7 +66,7 @@ public class ShortestPath {
             int weight = edge[2];
             graph.get(start).add(new int[] {end, weight});
             result[start][end] = weight;
-            nextNode[start][end] = end;
+            preNode[start][end] = end;
         }
 
         // start Floyd-Warshall 
@@ -53,7 +80,7 @@ public class ShortestPath {
                         // node i to node k is reachable and node k to node j is reachable
                         // start the relax operation
                         result[i][j] = result[i][k] + result[k][j];
-                        nextNode[i][j] = k; // update the nextNode array
+                        preNode[i][j] = k; // update the nextNode array
                     }
                 }
             }
@@ -81,7 +108,7 @@ public class ShortestPath {
         PriorityQueue<int[]> minHeap = new PriorityQueue<>((o1, o2) -> o1[2] - o2[2]); // [node number, prev node number, distance from start node]
         boolean[] visited = new boolean[n]; // default value is false
 
-        minHeap.add(new int[] {startNode, startNode, 0});
+        minHeap.add(new int[] {startNode, -1, 0});
 
         while (!minHeap.isEmpty()) {
             int[] current = minHeap.poll();
@@ -95,8 +122,8 @@ public class ShortestPath {
 
             visited[nodeId] = true;
             result[startNode][nodeId] = distanceFromStart;
-            nextNode[startNode][nodeId] = prevNodeId;
-            nextNode[prevNodeId][nodeId] = nodeId;
+            preNode[startNode][nodeId] = prevNodeId;
+            preNode[prevNodeId][nodeId] = nodeId;
 
             for (int[] adj : graph.get(nodeId)) {
                 // relax operation
@@ -124,26 +151,29 @@ public class ShortestPath {
 
         System.out.println("Print the nextNode path array:");
         for (int i = 0; i < 4; i++) {
-            System.out.println(Arrays.toString(nextNode[i]));
+            System.out.println(Arrays.toString(preNode[i]));
         }
     }
 
     private String getPath(int start, int end) {
+        if (result[start][end] == INF) {
+            System.out.println("No path available");
+            return "";
+        }
         List<Integer> path = new ArrayList<>();
-        path.add(start);
 
-        while (nextNode[start][end] != end) {
-            start = nextNode[start][end];
-            path.add(start);
+        while (preNode[start][end] != -1) {
+            path.add(end);
+            end = preNode[start][end];
         }
 
-        path.add(end);
+        Collections.reverse(path);
         
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < path.size() - 1; i++) {
-            sb.append(path.get(i) + "->");
+            sb.append(path.get(i)).append("->");
         }
-        sb.append(path.get(path.size() - 1));
+        sb.append(path.getLast());
 
         return sb.toString();
     }
